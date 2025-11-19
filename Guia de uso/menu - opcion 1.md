@@ -4,17 +4,19 @@
 
 El objetivo de este módulo es realizar la "huella digital" (Fingerprinting) de la aplicación web, una fase crucial para entender la superficie de ataque antes de cualquier prueba activa.
 
-### 🎯 Objetivo
+🎯 Objetivo:
+
 Identificar las tecnologías que usa el servidor, desde el backend (Lenguajes de programación, CMS, Servidores Web) hasta el frontend (Librerías JavaScript, Frameworks).
 
-### 🛠️ Herramientas Utilizadas
+🛠️ Herramientas Utilizadas:
+
 Este módulo ejecuta de forma consolidada las siguientes herramientas, enfocadas en la recopilación de datos pasiva y semi-activa:
 
 Webanalyze: Enfocado en la detección de frameworks de JavaScript, librerías y tecnologías del lado del cliente.
 
 WhatWeb: Especializado en la detección amplia de tecnologías, incluyendo servidores web (Apache, Nginx), sistemas operativos, versiones de PHP/Python y módulos específicos.
 
-### Paso a Paso para el Módulo [1]:
+Paso a Paso para el Módulo [1]:
 
 Requisito: Debe haber definido el objetivo previamente con la opción [0].
 
@@ -24,13 +26,13 @@ Ejecución: El panel comenzará a ejecutar Webanalyze seguido de WhatWeb en el T
 
 Visualización: El script mostrará un resumen conciso de las tecnologías más importantes encontradas (ej: "WordPress v6.4, Nginx/1.18, jQuery").
 
-Guardado de Resultados: Todos los logs completos de Webanalyze (.json) y WhatWeb (.txt) se guardan automáticamente en la carpeta de resultados del objetivo para su análisis detallado posterior. La ruta completa de los resultados de reconocimiento es: ~/scanetos_workspaces/url del sitio/recon
+Guardado de Resultados: Todos los logs completos de Webanalyze (.json) y WhatWeb (.txt) se guardan automáticamente en la carpeta de resultados del objetivo para su análisis detallado posterior.
 
-<div align="center">
-  <img src="../imagenes/whatweb.png" alt="Salida de WhatWeb mostrando tecnologías y versiones" width="600px">
-</div>
+La ruta completa de los resultados de reconocimiento es: ~/scanetos_workspaces/url del sitio/recon
 
-### 💡 Valor para el Auditor
+<div align="center">   <img src="../imagenes/whatweb.png" alt="Salida de WhatWeb mostrando tecnologías y versiones" width="600px"> </div>
+
+💡 Valor para el Auditor:
 
 La información de Fingerprinting es vital porque:
 
@@ -42,10 +44,12 @@ Reduce el Ruido: Si se detecta un Web Application Firewall (WAF), el auditor sab
 
 Este módulo se enfoca en el escaneo de red fundamental para determinar la conectividad, los puertos abiertos y los servicios básicos del objetivo, utilizando la herramienta estándar de la industria, Nmap.
 
-🎯 Objetivo
+🎯 Objetivo:
+
 Identificar la topología de red, los puertos TCP y UDP accesibles, y las versiones de los servicios que se ejecutan en esos puertos. Esto es crucial para saber dónde enfocar los ataques de la siguiente fase.
 
-🛠️ Herramienta Utilizada
+🛠️ Herramienta Utilizada:
+
 Nmap (Network Mapper): Ejecutado en modo de escaneo rápido (-F o --top-ports), enfocándose solo en los puertos más comunes (HTTP, HTTPS, SSH, FTP, etc.) para reducir el tiempo de ejecución.
 
 Flujo Paso a Paso del Módulo [2]:
@@ -59,22 +63,22 @@ Visualización en Vivo: El panel mostrará la salida de Nmap directamente en la 
 Guardado de Resultados: Se genera un log de Nmap en formato nmap o xml para el análisis y reporte final.
 
 Ruta de Resultados: La salida detallada para este módulo se guarda en: ~/scanetos_workspaces/url del sitio/recon con el nombre de nmap_full.txt
-💡 Valor para el Auditor
+
+💡 Valor para el Auditor:
+
 Un escaneo rápido de puertos es el mapa del sitio web. Permite:
 
 Descubrir Servicios Inesperados: Identificar un puerto 3306 (MySQL) o 21 (FTP) abierto en un servidor web, lo cual indica un posible fallo de configuración grave.
 
 Ahorrar Tiempo: Al ser un escaneo rápido, proporciona la información necesaria para el siguiente paso sin ejecutar un barrido de 65.535 puertos, lo que puede tardar horas.
 
-<div align="center">
-  <img src="../imagenes/nmap-fast.png" alt="Salida de NMAP fast" width="600px">
-</div>
+<div align="center">   <img src="../imagenes/nmap-fast.png" alt="Salida de NMAP fast" width="600px"> </div>
 
 ## [3] Fuzzing de Directorios (ffuf/GoBuster)
 
 Este módulo es esencial en la fase de enumeración de contenido y busca descubrir archivos y directorios ocultos, de backup, o no enlazados que puedan revelar secretos, credenciales o endpoints sensibles.
 
-🎯 Objetivo
+🎯 Objetivo:
 
 El objetivo es realizar una búsqueda de fuerza bruta inteligente para mapear la superficie completa del sitio web, incluyendo las rutas que los desarrolladores no quieren que el público encuentre.
 
@@ -125,7 +129,6 @@ El objetivo principal es identificar y validar endpoints que permitan a un ataca
 SQLMap: La herramienta de código abierto estándar de la industria para detectar y explotar vulnerabilidades de inyección SQL.
 
 Flujo Paso a Paso del Módulo [4]:
-
 Selección: Elige la opción [4] Escaneo de Vulnerabilidades (SQLMap) en el menú principal.
 
 Identificación de Endpoints: El panel utiliza los resultados de los módulos anteriores (Módulos [1] y [3]) para localizar automáticamente endpoints con parámetros probables (ej: https://juice-shop.herokuapp.com/rest/products/search?q=test*).
@@ -138,10 +141,8 @@ Guardado de Resultados: Todos los logs de SQLMap, incluyendo los payloads exitos
 
 Ruta de Resultados: La salida detallada para este módulo se guarda en: /scanetos_workspaces/url del sitio/vulns/sqlmap_get/url del sitio
 
-<div align="center">
-  <img src="../imagenes/sqli.png" alt="Salida de SQLMap" width="600px">
-</div>
+<div align="center">   <img src="../imagenes/sqli.png" alt="Salida de SQLMap" width="600px"> </div>
 
 💡 Valor para el Auditor:
 
-Una vulnerabilidad de SQLi es a menudo la vía más rápida para comprometer completamente una aplicación. Este módulo le ahorra al auditor el tiempo de prueba manual de miles de payloads y proporciona una confirmación inmediata de la vulnerabilidad. En el contexto de un sitio como WordPress (revelado en el Módulo [1]), este módulo es crucial para auditar plugins y la API REST.
+Una vulnerabilidad de SQLi es a menudo la vía más rápida para comprometer completamente una aplicación. Este módulo le ahorra al auditor el tiempo de prueba manual de miles de payloads y proporciona una confirmación inmediata de la vulnerabilidad. En el contexto de la API REST (revelada en el Módulo [1]), este módulo es crucial para auditar endpoints y la API REST.
