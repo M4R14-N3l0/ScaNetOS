@@ -1,4 +1,6 @@
-# Módulo [1]: Reconocimiento Web (Fingerprinting)
+# Módulo: Reconocimiento Web (Fingerprinting)
+
+[1] Webanalyze/WhatWeb (Fingerprint) <--- ¡CONSOLIDADO!
 
 El objetivo de este módulo es realizar la "huella digital" (Fingerprinting) de la aplicación web, una fase crucial para entender la superficie de ataque antes de cualquier prueba activa.
 
