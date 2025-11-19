@@ -24,6 +24,10 @@ Visualización: El script mostrará un resumen conciso de las tecnologías más 
 
 Guardado de Resultados: Todos los logs completos de Webanalyze (.json) y WhatWeb (.txt) se guardan automáticamente en la carpeta de resultados del objetivo para su análisis detallado posterior. La ruta completa de los resultados de reconocimiento es: ~/scanetos_workspaces/rootedcon.com/recon
 
+<div align="center">
+  <img src="imagenes/whatweb.png" alt="Salida de WhatWeb mostrando tecnologías y versiones" width="600px">
+</div>
+
 ### 💡 Valor para el Auditor
 
 La información de Fingerprinting es vital porque:
