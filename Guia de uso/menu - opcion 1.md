@@ -136,7 +136,7 @@ Confirmación de Vulnerabilidad: Si SQLMap identifica una inyección SQL válida
 
 Guardado de Resultados: Todos los logs de SQLMap, incluyendo los payloads exitosos y los backups de sesiones, se guardan para la revisión del auditor.
 
-Ruta de Resultados: La salida detallada para este módulo se guarda en: 
+Ruta de Resultados: La salida detallada para este módulo se guarda en: /scanetos_workspaces/url del sitio/vulns/sqlmap_get/url del sitio
 
 <div align="center">
   <img src="../imagenes/sqli.png" alt="Salida de SQLMap" width="600px">
