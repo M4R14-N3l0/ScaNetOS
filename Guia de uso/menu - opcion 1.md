@@ -128,7 +128,7 @@ Flujo Paso a Paso del Módulo [4]:
 
 Selección: Elige la opción [4] Escaneo de Vulnerabilidades (SQLMap) en el menú principal.
 
-Identificación de Endpoints: El panel utiliza los resultados de los módulos anteriores (Módulos [1] y [3]) para localizar automáticamente endpoints con parámetros probables (ej: https://target.com/page?id=1, wp-json/v2/users?search=test).
+Identificación de Endpoints: El panel utiliza los resultados de los módulos anteriores (Módulos [1] y [3]) para localizar automáticamente endpoints con parámetros probables (ej: ).
 
 Ejecución de SQLMap: El script ejecuta SQLMap contra los endpoints identificados con configuraciones optimizadas (--batch, --level=3, --risk=2) para realizar una prueba exhaustiva y eficiente.
 
@@ -137,6 +137,10 @@ Confirmación de Vulnerabilidad: Si SQLMap identifica una inyección SQL válida
 Guardado de Resultados: Todos los logs de SQLMap, incluyendo los payloads exitosos y los backups de sesiones, se guardan para la revisión del auditor.
 
 Ruta de Resultados: La salida detallada para este módulo se guarda en: 
+
+<div align="center">
+  <img src="../imagenes/sqli.png" alt="Salida de SQLMap" width="600px">
+</div>
 
 💡 Valor para el Auditor:
 
