@@ -112,3 +112,4 @@ Archivos de Backup: Rutas como /sitio_viejo.zip o /wp-content.tgz.
 
 Nota sobre Resultados Vacíos: Si el Fuzzing de Directorios no devuelve resultados (solo códigos 404 o 403), esto es un indicador de una configuración de seguridad robusta. El servidor probablemente utiliza un WAF (Web Application Firewall) y/o ha configurado correctamente su acceso a archivos, bloqueando la enumeración. En este caso, el auditor debe pasar a técnicas más avanzadas o a módulos de ataque enfocados en la API (Módulo [4] - SQLMap).
 
+## Módulo [4] Escaneo de Vulnerabilidades (SQLMap)
