@@ -69,3 +69,8 @@ Ahorrar Tiempo: Al ser un escaneo rápido, proporciona la información necesaria
 <div align="center">
   <img src="../imagenes/nmap-fast.png" alt="Salida de NMAP fast" width="600px">
 </div>
+
+## [3] Fuzzing de Directorios (ffuf/GoBuster)
+
+
+
