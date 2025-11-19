@@ -37,3 +37,5 @@ La información de Fingerprinting es vital porque:
 Define Prioridades: Si el sitio usa WordPress v5.0, el auditor sabe que debe enfocarse inmediatamente en buscar vulnerabilidades específicas de esa versión.
 
 Reduce el Ruido: Si se detecta un Web Application Firewall (WAF), el auditor sabrá que las pruebas de inyección deben ser más sutiles o que deben usar técnicas de evasión.
+
+## [2] Nmap (Fast Scan)
