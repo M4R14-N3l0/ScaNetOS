@@ -128,7 +128,7 @@ Flujo Paso a Paso del Módulo [4]:
 
 Selección: Elige la opción [4] Escaneo de Vulnerabilidades (SQLMap) en el menú principal.
 
-Identificación de Endpoints: El panel utiliza los resultados de los módulos anteriores (Módulos [1] y [3]) para localizar automáticamente endpoints con parámetros probables (ej: ).
+Identificación de Endpoints: El panel utiliza los resultados de los módulos anteriores (Módulos [1] y [3]) para localizar automáticamente endpoints con parámetros probables (ej: https://juice-shop.herokuapp.com/rest/products/search?q=test*).
 
 Ejecución de SQLMap: El script ejecuta SQLMap contra los endpoints identificados con configuraciones optimizadas (--batch, --level=3, --risk=2) para realizar una prueba exhaustiva y eficiente.
 
