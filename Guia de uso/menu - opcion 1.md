@@ -72,5 +72,41 @@ Ahorrar Tiempo: Al ser un escaneo rápido, proporciona la información necesaria
 
 ## [3] Fuzzing de Directorios (ffuf/GoBuster)
 
+Este módulo es esencial en la fase de enumeración de contenido y busca descubrir archivos y directorios ocultos, de backup, o no enlazados que puedan revelar secretos, credenciales o endpoints sensibles.
 
+🎯 Objetivo
+
+El objetivo es realizar una búsqueda de fuerza bruta inteligente para mapear la superficie completa del sitio web, incluyendo las rutas que los desarrolladores no quieren que el público encuentre.
+
+🛠️ Herramientas Utilizadas:
+
+Este módulo utiliza herramientas de fuzzing de alto rendimiento para el descubrimiento de contenido:
+
+ffuf / GoBuster: Herramientas altamente optimizadas para enviar miles de peticiones HTTP por segundo y filtrar las respuestas útiles.
+
+Flujo Paso a Paso del Módulo [3]:
+
+Selección: Elige la opción [3] Fuzzing de Directorios en el menú principal.
+
+Selección de Wordlist: El panel te preguntará qué lista de palabras (wordlist) deseas utilizar. Las listas de SecLists están integradas y son las recomendadas (ej: directory-list-2.3-medium.txt).
+
+Ejecución Optimizada: El script ejecutará el fuzzing utilizando una configuración optimizada:
+
+Inclusión: Solo se mostrarán los códigos de estado más relevantes (200, 302, 204, 307).
+
+Filtrado: Se excluyen los códigos de error comunes que no aportan valor (404 Not Found).
+
+Guardado de Resultados: Se genera un informe simple de texto (.txt) con la lista de rutas encontradas, organizado por código de estado.
+
+Ruta de Resultados: La salida detallada para este módulo se guarda en: ~/scanetos_workspaces/url del sitio/fuzzing
+
+💡 Valor para el Auditor:
+
+El Fuzzing es la única forma de encontrar fallos de seguridad basados en la divulgación de información por caminos no enlazados. Un solo resultado de este módulo puede ser un hallazgo crítico:
+
+Archivos de Configuración: Rutas como /.env o /config.php.bak.
+
+Paneles de Administración: Rutas como /panel o /admin-login.
+
+Archivos de Backup: Rutas como /sitio_viejo.zip o /wp-content.tgz.
 
