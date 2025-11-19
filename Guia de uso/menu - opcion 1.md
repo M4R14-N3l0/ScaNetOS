@@ -113,3 +113,31 @@ Archivos de Backup: Rutas como /sitio_viejo.zip o /wp-content.tgz.
 Nota sobre Resultados Vacíos: Si el Fuzzing de Directorios no devuelve resultados (solo códigos 404 o 403), esto es un indicador de una configuración de seguridad robusta. El servidor probablemente utiliza un WAF (Web Application Firewall) y/o ha configurado correctamente su acceso a archivos, bloqueando la enumeración. En este caso, el auditor debe pasar a técnicas más avanzadas o a módulos de ataque enfocados en la API (Módulo [4] - SQLMap).
 
 ## Módulo [4] Escaneo de Vulnerabilidades (SQLMap)
+
+Este módulo se dedica a la prueba activa y automatizada de Inyección SQL (SQLi) y otras vulnerabilidades de inyección en parámetros de URL, endpoints de API y formularios.
+
+🎯 Objetivo:
+
+El objetivo principal es identificar y validar endpoints que permitan a un atacante manipular las consultas a la base de datos del servidor, lo que puede llevar a la fuga de información sensible, credenciales o la manipulación de datos.
+
+🛠️ Herramienta Utilizada:
+
+SQLMap: La herramienta de código abierto estándar de la industria para detectar y explotar vulnerabilidades de inyección SQL.
+
+Flujo Paso a Paso del Módulo [4]:
+
+Selección: Elige la opción [4] Escaneo de Vulnerabilidades (SQLMap) en el menú principal.
+
+Identificación de Endpoints: El panel utiliza los resultados de los módulos anteriores (Módulos [1] y [3]) para localizar automáticamente endpoints con parámetros probables (ej: https://target.com/page?id=1, wp-json/v2/users?search=test).
+
+Ejecución de SQLMap: El script ejecuta SQLMap contra los endpoints identificados con configuraciones optimizadas (--batch, --level=3, --risk=2) para realizar una prueba exhaustiva y eficiente.
+
+Confirmación de Vulnerabilidad: Si SQLMap identifica una inyección SQL válida, el panel mostrará inmediatamente una ALERTA CRÍTICA y ofrecerá opciones para profundizar la explotación (ej: obtener bases de datos o tablas).
+
+Guardado de Resultados: Todos los logs de SQLMap, incluyendo los payloads exitosos y los backups de sesiones, se guardan para la revisión del auditor.
+
+Ruta de Resultados: La salida detallada para este módulo se guarda en: 
+
+💡 Valor para el Auditor:
+
+Una vulnerabilidad de SQLi es a menudo la vía más rápida para comprometer completamente una aplicación. Este módulo le ahorra al auditor el tiempo de prueba manual de miles de payloads y proporciona una confirmación inmediata de la vulnerabilidad. En el contexto de un sitio como WordPress (revelado en el Módulo [1]), este módulo es crucial para auditar plugins y la API REST.
